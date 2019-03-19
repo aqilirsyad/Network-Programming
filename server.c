@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
      struct sockaddr_in serv_addr, cli_addr;
      int n;
      if (argc < 2) {
-         fprintf(stderr,"ERROR, no port provided\n");
+         fprintf(stderr,"ERROR!, please insert your port\n");
          exit(1);
      }
      sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -45,13 +45,13 @@ int main(int argc, char *argv[])
      {
            bzero(buffer,255);
            n = read(newsockfd,buffer,255);
-           if (n < 0) error("ERROR reading from socket");
+           if (n < 0) error("ERROR reading from the socket");
            printf("Client: %s",buffer);
           bzero(buffer,255);
           fgets(buffer,255,stdin);
           n = write(newsockfd,buffer,strlen(buffer));
-           if (n < 0) error("ERROR writing to socket");
-           int i=strncmp("Bye" , buffer, 3);
+           if (n < 0) error("ERROR writing to the socket");
+           int i=strncmp("GoodBye" , buffer, 7);
            if(i == 0)
                break;
      }
